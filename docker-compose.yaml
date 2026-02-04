@@ -21,7 +21,8 @@ services:
         
     expose:
       - "3000"
-
+    networks:
+      - coolify
     volumes:
       # Store sessions in the .sessions folder (comment it if you're using MongoDB)
       - './sessions:/app/.sessions'
@@ -32,6 +33,10 @@ services:
 
     env_file:
       - .env
+    
+networks:
+  coolify:
+    external: true
 
 # NOTE: Only if you're using PostgreSQL to save sessions
 # https://waha.devlike.pro/docs/how-to/storages/#media---postgresql
